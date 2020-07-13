@@ -47,21 +47,16 @@ async function main() {
                 <div class="col-1">${user.aliasCount}</div>
                 <div class="col-1">${user.mailcount}</div>
                 <div class="col-2">
-                    <button id="edit-${i}">edit</button>
-                    <button id="delete-${i}">delete</button>
+                    <button id="view-${i}">view</button>
                 </div>
             </div>`
     });
     document.getElementById('usertable').innerHTML = html;
-    // users.forEach((user, i) => {
-    // // for (var i=0; i < users.length; i++) {
-    //     document.getElementById(`edit-${i}`).addEventListener('click', async e => {
-    //         window.location = `/user.html?id=${user._id}`;
-    //     });
-    //     document.getElementById(`delete-${i}`).addEventListener('click', async e => {
-    //         window.location = `/user/delete.html?id=${user._id}`;
-    //     });
-    // });
+    users.forEach((user, i) => {
+        document.getElementById(`view-${i}`).addEventListener('click', async e => {
+            window.location = `/user.html?id=${user.userId}`;
+        });
+    });
 }
 
 main();
