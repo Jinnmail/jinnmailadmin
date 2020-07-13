@@ -8,6 +8,7 @@ async function main() {
         }
     })
     const user = await res.json();
+    document.getElementById('user').innerHTML = JSON.stringify(user.data[0], null, 2);
     document.getElementById('email').innerHTML = user.data[0].email;
 }
 
