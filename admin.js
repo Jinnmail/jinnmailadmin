@@ -59,6 +59,7 @@ async function main() {
                     <td></td>
                 </tr>`
     });
+    
     html += '</tbody>'
 
     document.getElementById('userTable').innerHTML = html;

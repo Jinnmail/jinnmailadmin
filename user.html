@@ -9,9 +9,6 @@
     </head>
     <body>
         <div class="row"><a href="javascript:history.back()">Go Back</a></div>
-        <pre class="row">
-            <span id="user"></span>
-        </pre>
         <div class="row">
             <div class="col-1" style="text-align:right">User ID:</div>
             <div id="userId" class="col-3"></div>
@@ -31,7 +28,33 @@
             <div class="col-1" style="text-align:right">Aliases:</div>
             <div class="col-11">
                 <table id="aliasesTable">
-                    
+
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1" style="text-align:right">User Email Messages:</div>
+            <div class="col-11">
+                <h3>List of email messages processed to user</h2>
+                <table id="userEmailMessagesTable">
+
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1" style="text-align:right">User Email Messages:</div>
+            <div class="col-11">
+                <h3>List of email replies to sender</h2>
+                <table id="userEmailMessagesTable2">
+
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1" style="text-align:right">Marketing:</div>
+            <div class="col-11">
+                <table id="marketingTable">
+
                 </table>
             </div>
         </div>
@@ -99,6 +122,14 @@
             <div class="col-1" style="text-align:right">Platform:</div>
             <div id="platform" class="col-3"></div>
             <div class="col-8"></div>
+        </div>
+        <div class="row">
+            <div class="col-1" style="text-align:right">Raw Data:</div>
+            <div class="col-11">
+                <pre>
+                    <span id="rawData"></span>
+                <pre>
+            </div>
         </div>
         <script src="/user.js"></script>     
     </body>
