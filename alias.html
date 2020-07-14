@@ -4,12 +4,77 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
+        <link rel="stylesheet" href="/assets/css/style.css">
         <script src="/config.js"></script>
     </head>
     <body>
         <div class="row"><a href="javascript:history.back()">Go Back</a></div>
         <h1>Alias Details</h1>
-        <pre id="alias"></pre>
+        <div class="row">
+            <div class="col-2" style="text-align:right">Alias ID:</div>
+            <div id="aliasId" class="col-5"></div>
+            <div class="col-5"></div>
+        </div>
+        <div class="row">
+            <div class="col-2" style="text-align:right">Alias address:</div>
+            <div id="aliasAddress" class="col-5"></div>
+            <div class="col-5"></div>
+        </div>
+        <div class="row">
+            <div class="col-2" style="text-align:right">Custom or Generated:</div>
+            <div id="customOrGenerated" class="col-5"></div>
+            <div class="col-5"></div>
+        </div>
+        <div class="row">
+            <div class="col-2" style="text-align:right">Creation timestamp:</div>
+            <div id="creationTimestamp" class="col-5"></div>
+            <div class="col-5"></div>
+        </div>
+        <div class="row">
+            <div class="col-2" style="text-align:right">Receiving email address(es):</div>
+            <div id="receivingEmailAddresses" class="col-5"></div>
+            <div class="col-5"></div>
+        </div>
+        <div class="row">
+            <div class="col-2" style="text-align:right">Associated domain(s):</div>
+            <div id="associatedDomains" class="col-5"></div>
+            <div class="col-5"></div>
+        </div>
+        <div class="row">
+            <div class="col-2" style="text-align:right">Creation URL:</div>
+            <div id="creationUrl" class="col-5"></div>
+            <div class="col-5"></div>
+        </div>
+        <div class="row">
+            <div class="col-2" style="text-align:right">Total emails sent through alias:</div>
+            <div id="totalEmailsSentThroughAlias" class="col-5"></div>
+            <div class="col-5"></div>
+        </div>
+        <div class="row">
+            <div class="col-2" style="text-align:right">Total emails bounced:</div>
+            <div id="totalEmailsBounced" class="col-5"></div>
+            <div class="col-5"></div>
+        </div>
+        <div class="row">
+            <div class="col-2" style="text-align:right">Total emails held/discarded (when inactive):</div>
+            <div id="totalEmailsHeldOrDiscardedWhenInactive" class="col-5"></div>
+            <div class="col-5"></div>
+        </div>
+        <div class="row">
+            <div class="col-2" style="text-align:right">Current total emails held/discarded (if inactive):</div>
+            <div id="currentTotalEmailsHeldOrDiscardedIfInactive" class="col-5"></div>
+            <div class="col-5"></div>
+        </div>
+        <div class="row">
+            <div class="col-2" style="text-align:right">Total email replies to sender:</div>
+            <div id="totalEmailRepliesToSender" class="col-5"></div>
+            <div class="col-5"></div>
+        </div>
+        <div class="row">
+            <div class="col-2" style="text-align:right">Raw data:</div>
+            <div class="col-10"><pre id="rawAlias"></pre></div>
+        </div>
+        
         <script src="/alias.js"></script> 
     </body>
 </html>

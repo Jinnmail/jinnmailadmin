@@ -8,7 +8,11 @@ async function main() {
         }
     })
     const alias = await res.json();
-    document.getElementById('alias').innerHTML = JSON.stringify(alias, null, 2);
+    document.getElementById('aliasId').innerHTML = alias.data[0].aliasId;
+    document.getElementById('aliasAddress').innerHTML = alias.data[0].alias;
+    document.getElementById('creationTimestamp').innerHTML = alias.data[0].created;
+    document.getElementById('creationUrl').innerHTML = alias.data[0].refferedUrl;
+    document.getElementById('rawAlias').innerHTML = JSON.stringify(alias, null, 2);
 }
 
 main();
