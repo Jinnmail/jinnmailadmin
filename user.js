@@ -25,13 +25,13 @@ async function main() {
             <th>Timestamp most recent email opened</th>
         </thead>
         </tbody>`;
-    user.data[0].aliases.forEach((alias) => {
+    user.data[0].aliases.forEach((alias, i) => {
         aliasesTableHtml += `
             <tr>
                 <td>${alias.userId}</td>
                 <td>${alias.alias}</td>
                 <td>${alias.status}</td>
-                <td></td>
+                <td><button id="details-${i}">details</button></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -41,9 +41,15 @@ async function main() {
             </tr>
         `;
     })
+
     aliasesTableHtml += '</tbody>'
     document.getElementById('aliasesTable').innerHTML = aliasesTableHtml;
-    
+    user.data[0].aliases.forEach((alias, i) => {
+        document.getElementById(`details-${i}`).addEventListener('click', async e => {
+            window.location = `/alias.html?aliasId=${alias.aliasId}`;
+        });
+    });
+
     var userEmailMessagesTableHtml = `
         <thead>
             <th>Email Message ID</th>

@@ -49,7 +49,7 @@ async function main() {
                     <td>${user.userId}</td>
                     <td>${user.created}</td>
                     <td>${user.email}</td>
-                    <td><button id="view-${i}">view</button></td>
+                    <td><button id="details-${i}">details</button></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -64,7 +64,7 @@ async function main() {
 
     document.getElementById('userTable').innerHTML = html;
     users.forEach((user, i) => {
-        document.getElementById(`view-${i}`).addEventListener('click', async e => {
+        document.getElementById(`details-${i}`).addEventListener('click', async e => {
             window.location = `/user.html?id=${user.userId}`;
         });
     });
