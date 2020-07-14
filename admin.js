@@ -59,7 +59,7 @@ async function main() {
                     <td></td>
                 </tr>`
     });
-    html += `</tbody>`
+    html += '</tbody>'
 
     document.getElementById('userTable').innerHTML = html;
     users.forEach((user, i) => {
