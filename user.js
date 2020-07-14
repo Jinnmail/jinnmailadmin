@@ -9,7 +9,10 @@ async function main() {
     })
     const user = await res.json();
     document.getElementById('user').innerHTML = JSON.stringify(user.data[0], null, 2);
-    document.getElementById('email').innerHTML = user.data[0].email;
+    console.log(user.data[0]);
+    document.getElementById('userId').innerHTML = user.data[0].userId;
+    document.getElementById('signupTimestamp').innerHTML = user.data[0].created;
+    document.getElementById('signupEmailAddress').innerHTML = user.data[0].email;
 }
 
 main();
