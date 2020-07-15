@@ -26,17 +26,29 @@
             <div class="col-7"></div>
         </div>
         <div class="row">
-            <div class="col-2" style="text-align:right">Aliases:</div>
-            <div class="col-10">
-                <table id="aliasesTable">
+            <div class="row">
+                <div class="col-2" style="text-align:right">Aliases:</div>
+                <div class="col-2">
+                    <input id="aliasSearch" type="text" placeholder="Search" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8">
+                    <table id="aliasesTable">
 
-                </table>
+                    </table>
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="col-2" style="text-align:right">User Email Messages:</div>
             <div class="col-10">
-                <h3>List of email messages processed to user</h2>
+                <div class="col-5">
+                    <h3>List of email messages processed to user</h3>
+                </div>
+                <div class="col-2">
+                    <input id="userEmailMessagesSearch" type="text" placeholder="Search" style="margin-top:29px" />
+                </div>
                 <table id="userEmailMessagesTable">
 
                 </table>
@@ -45,7 +57,12 @@
         <div class="row">
             <div class="col-2" style="text-align:right">User Email Messages:</div>
             <div class="col-10">
-                <h3>List of email replies to sender</h2>
+                <div class="col-4">
+                    <h3>List of email replies to sender</h2>
+                </div>
+                <div class="col-2">
+                    <input id="userEmailMessagesSearch2" type="text" placeholder="Search" style="margin-top:29px" />
+                </div>
                 <table id="userEmailMessagesTable2">
 
                 </table>

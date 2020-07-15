@@ -68,7 +68,7 @@ async function fillUserTable(users) {
     document.getElementById('userTable').innerHTML = html;
     users.forEach((user, i) => {
         document.getElementById(`details-${i}`).addEventListener('click', async e => {
-            window.location = `/user.html?id=${user.userId}`;
+            window.location = `/user.html?userId=${user.userId}`;
         });
     });
 }
