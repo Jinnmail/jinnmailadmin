@@ -1,86 +1,53 @@
-// async function userAdmin() {
-//     const res = await fetch(API + '/user_admin', {
-//         headers: {
-//             'Authorization': localStorage.getItem('googleToken')
-//         },
-//     })
-//     const userAdmin = await res.json();
-    
-//     return userAdmin;
-// }
-
-function myFunction(input) {
+function searchFunction(input) {
     var input, filter, table, tr, td, i, txtValue;
     filter = input.toUpperCase();
     table = document.getElementById("userTable");
     tr = table.getElementsByTagName("tr");
     for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[2];
-      if (td) {
-        txtValue = td.textContent || td.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
-        } else {
-          tr[i].style.display = "none";
-        }
-      }       
+        td = tr[i].getElementsByTagName("td")[2];
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }       
     }
-  }
+}
 
-document.getElementById("userSearch").addEventListener("keydown", e => {
-    var query = document.getElementById("userSearch").value
-    if (query) {
-        if (e.key === "Backspace") {
-            query = query.substring(0, query.length - 1)
-        } else if (e.keyCode === 13) {
-            // do nothing, disables the enter key
-        } else {
-            query += e.key
-        }
-        // query the table
-        myFunction(query);
-        // get back results and overwrite table
-
-        
-    } else {
-        // fill regularly
-    }
-})
-
-async function main() {
-    // const googleToken = localStorage.getItem('googleToken');  
-    // if (!googleToken) {
-    //     window.location = '/';
-    // } else {
-    //     const isAdmin = await userAdmin()
-    //     if (!isAdmin) {
-    //         window.location = '/';
-    //     }
-    // }
-    const res = await fetch(API + '/api/v1/user', {
+async function searchFunction2(query) {
+    const res = await fetch(API + `/api/v1/admin/userSearch?query=${query}`, {
         headers: {
             'Authorization': localStorage.getItem('token')
         }
     })
+    document.getElementById('userTable').innerHTML = userTableHeadHTML;
     const users = await res.json();
-    var html = `
-            <thead>
-                <tr>
-                    <th onclick="sortTable(0)">User ID</th>
-                    <th>Signup Timestamp</th>
-                    <th onclick="sortTable(2)">Signup email address</th>
-                    <th>Operation</th>
-                    <th>Total aliases</th>
-                    <th>Active aliases</th>
-                    <th>Total emails sent to user</th>
-                    <th>Total email replies by user</th>
-                    <th>Timestamp most recent email opened</th>
-                    <th>Timestamp of last alias created</th>
-                    <th>Total recipient email addresses</th>
-                </tr>
-            </thead>
-            <tbody>` 
-        
+    fillUserTable(users.data);
+}
+
+const userTableHeadHTML = `
+    <thead>
+        <tr>
+            <th onclick="sortTable(0)">User ID</th>
+            <th>Signup Timestamp</th>
+            <th onclick="sortTable(2)">Signup email address</th>
+            <th>Operation</th>
+            <th>Total aliases</th>
+            <th>Active aliases</th>
+            <th>Total emails sent to user</th>
+            <th>Total email replies by user</th>
+            <th>Timestamp most recent email opened</th>
+            <th>Timestamp of last alias created</th>
+            <th>Total recipient email addresses</th>
+        </tr>
+    </thead>
+    <tbody>
+`;
+
+async function fillUserTable(users) {
+    var html = userTableHeadHTML;
     users.forEach((user, i) => {
         html += ` 
                 <tr>
@@ -97,16 +64,52 @@ async function main() {
                     <td></td>
                 </tr>`
     });
-    
     html += '</tbody>'
-
     document.getElementById('userTable').innerHTML = html;
     users.forEach((user, i) => {
         document.getElementById(`details-${i}`).addEventListener('click', async e => {
             window.location = `/user.html?id=${user.userId}`;
         });
     });
-    sortTable(0);
+}
+
+document.getElementById("userSearch").addEventListener("keydown", async e => {
+    var query = document.getElementById("userSearch").value
+    if (e.key === "Backspace") {
+        query = query.substring(0, query.length - 1)
+    } else if (e.keyCode === 13 || e.which == 13) {
+        // do nothing, disables the enter key
+    } else {
+        query += e.key
+    }
+    if (query) {
+        searchFunction2(query);
+    } else {
+        const res = await fetch(API + '/api/v1/user', {
+            headers: {
+                'Authorization': localStorage.getItem('token')
+            }
+        })
+        const users = await res.json();
+        fillUserTable(users);
+        sortTable(0);
+    }
+});
+
+async function main() {
+    var query = document.getElementById('userSearch').value;
+    if (query) {
+        searchFunction2(query);
+    } else {
+        const res = await fetch(API + '/api/v1/user', {
+            headers: {
+                'Authorization': localStorage.getItem('token')
+            }
+        })
+        const users = await res.json();
+        await fillUserTable(users);
+        sortTable(0);
+    }
 }
 
 function sortTable(n) {
@@ -146,4 +149,7 @@ function sortTable(n) {
     }
 }
 
-main();
+setTimeout(function() {
+    main();
+}, 100);
+
