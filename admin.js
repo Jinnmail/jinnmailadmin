@@ -9,6 +9,23 @@
 //     return userAdmin;
 // }
 
+document.getElementById("userSearch").addEventListener("keydown", e => {
+    var query = document.getElementById("userSearch").value
+    if (query) {
+        if (e.key === "Backspace") {
+            query = query.substring(0, query.length - 1)
+        } else if (e.keyCode === 13) {
+            // do nothing, disables the enter key
+        } else {
+            query += e.key
+        }
+        alert(query)
+        // people_socket.people_filter(query)
+    } else {
+        // people_socket.list_people(1, 10)
+    }
+})
+
 async function main() {
     // const googleToken = localStorage.getItem('googleToken');  
     // if (!googleToken) {
