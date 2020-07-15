@@ -9,6 +9,24 @@
 //     return userAdmin;
 // }
 
+function myFunction(input) {
+    var input, filter, table, tr, td, i, txtValue;
+    filter = input.toUpperCase();
+    table = document.getElementById("userTable");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[2];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }       
+    }
+  }
+
 document.getElementById("userSearch").addEventListener("keydown", e => {
     var query = document.getElementById("userSearch").value
     if (query) {
@@ -19,10 +37,13 @@ document.getElementById("userSearch").addEventListener("keydown", e => {
         } else {
             query += e.key
         }
-        alert(query)
-        // people_socket.people_filter(query)
+        // query the table
+        myFunction(query);
+        // get back results and overwrite table
+
+        
     } else {
-        // people_socket.list_people(1, 10)
+        // fill regularly
     }
 })
 
